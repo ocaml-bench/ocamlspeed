@@ -6,4 +6,5 @@ COPY . /code/
 RUN apt-get update && apt-get install -y nginx python3 python3-pip
 RUN pip3 install --upgrade pip
 RUN pip3 install -e . && pip3 install uwsgi
-CMD [ "uwsgi", "--chdir=/code", "--module=ocamlspeed.deploy.wsgi:application", "--env=DJANGO_SETTINGS_MODULE=ocamlspeed.settings", "--master", "--http=0.0.0.0:49152", "--pidfile=/tmp/uwsgi.pid", "--max-requests=5000", "--processes=10"]
+RUN mv ocamlspeed/deploy/nginx.default-site.conf /etc/nginx/sites-enabled/default
+CMD ./start_server.sh

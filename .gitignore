@@ -9,3 +9,5 @@ build
 dist
 codespeed.egg-info/
 pyenv
+.vscode
+.eggs
