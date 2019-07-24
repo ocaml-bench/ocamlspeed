@@ -38,6 +38,12 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
+SILENCED_SYSTEM_CHECKS = [
+    'admin.E408',
+    'admin.E409',
+    'admin.E410',
+]
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
