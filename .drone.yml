@@ -8,3 +8,10 @@ platform:
 steps:
 - name: docker  
   image: plugins/docker
+  settings:
+    username:
+        from_secret: DOCKER_HUB_USERNAME
+    password:
+        from_secret: DOCKER_HUB_PASSWORD
+    repo: ocamlbench/ocamlspeed
+    tags: latest
