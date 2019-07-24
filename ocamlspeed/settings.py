@@ -18,11 +18,11 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASEDIR, 'data.db'),
+        'NAME': os.environ['DB_FILE'],
     }
 }
 
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Etc/UTC'
 
 LANGUAGE_CODE = 'en-us'
 
@@ -36,10 +36,9 @@ MEDIA_URL = '/media/'
 
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
-SECRET_KEY = 'as%n_m#)^vee2pe91^^@c))sl7^c6t-9r8n)_69%)2yt+(la2&'
+SECRET_KEY = os.environ['SECRET_KEY']
 
-
-MIDDLEWARE = (
+MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -86,3 +85,32 @@ STATICFILES_DIRS = (
 
 # Codespeed settings that can be overwritten here.
 from codespeed.settings import *
+
+WEBSITE_NAME = "ocamlspeed"
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'bench.ocamllabs.io']
+USE_TZ = True
+
+GIT_USE_COMMIT_DATE = True
+GIT_USE_FIRST_PARENT = True
+
+# default environment for Changes and Timeline views
+DEF_ENVIRONMENT = 'bench.ocamllabs.io'
+
+# Which executable + revision should be default as a baseline
+# Given as the name of the executable and commitid of the revision
+# Example: defaultbaseline = {'executable': 'myexe', 'revision': '21'}
+DEF_BASELINE = {'executable':'vanilla', 'tag':'4.07.1'}
+
+# used to highlight cells on the changes tab
+CHANGE_THRESHOLD = 20.0
+TREND_THRESHOLD = 20.0
+
+# make comparison page default to all executables not selected
+COMP_EXECUTABLES = [('','')] # NB: need empty tuple to make list evaluate
+
+# make comparison page default to normalization
+NORMALIZATION = True
+
+
+
+
