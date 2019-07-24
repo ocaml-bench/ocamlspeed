@@ -25,6 +25,8 @@
     </div>
   </a>
   <br />
+  <div id="status"></div>
+  <br/>
   <div id="reports"></div>
   {% if show_historical %}
   <div id="historical">
@@ -208,17 +210,7 @@
 
     $(function() {
         $("#status").html(getLoadText("Loading...", 0))
-            .load("{% url "projectstatus" %}", function(responseText) { updateStatusTable(); });
-    });
-    $(function() {
-        {% if show_reports %}
-            $("#reports").html(getLoadText("Loading...", 0))
-                .load("{% url "reports" %}", function(responseText) { updateReportTables(); });
-        {% endif %}
-
-        {% if show_historical %}
-        $.getJSON("{% url "gethistoricaldata" %}", renderplot);
-        {% endif %}
+            .load("{% url "projectstatus" %}");
     });
 
 </script>
