@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 RUN mkdir /code
-EXPOSE 49152
+EXPOSE 80
 ENV OCAMLSPEED_DB_LOCATION /db/data.db
 WORKDIR /code
 COPY . /code/
