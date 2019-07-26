@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 RUN mkdir /code
 EXPOSE 80
-ENV OCAMLSPEED_DB_LOCATION /db/data.db
+ENV OCAMLSPEED_DB_LOCATION /data/data.db
 WORKDIR /code
 COPY . /code/
 RUN apt-get update && apt-get install -y nginx python3 python3-pip gettext-base
