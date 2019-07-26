@@ -116,8 +116,4 @@ TREND_THRESHOLD = 20.0
 COMP_EXECUTABLES = [('','')] # NB: need empty tuple to make list evaluate
 
 # make comparison page default to normalization
-NORMALIZATION = os.environ.get('OCAMLSPEED_NORMALIZE', False)
-
-
-
-
+NORMALIZATION = os.environ.get('OCAMLSPEED_NORMALIZE', "false") == "true"
