@@ -15,6 +15,5 @@ steps:
         from_secret: DOCKER_HUB_PASSWORD
     repo: ocamlbench/ocamlspeed
     tags: latest
-      when:
-        branch:
-          - master
+    when:
+        branch: master
