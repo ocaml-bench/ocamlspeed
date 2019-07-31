@@ -30,3 +30,9 @@ services:
 This assumes you want the example ocamlspeed instance running on port 8080 on the local machine and you have two directories example-data and example-artifacts in the current directory which will be used for the database and run artifacts respectively.
 
 After this you can run ```docker-compose up -d``` to start the environment.
+
+To do local development, you can run ocamlspeed using django's development server as follows:
+
+```
+OCAMLSPEED_HOST=anything OCAMLSPEED_NAME=anything OCAMLSPEED_SECRET_KEY=anything OCAMLSPEED_DB_LOCATION=`pwd`/data.db ./manage.py runserver
+```
