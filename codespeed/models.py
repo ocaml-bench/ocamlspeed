@@ -246,7 +246,7 @@ class Result(models.Model):
         Benchmark, on_delete=models.CASCADE, related_name="results")
     environment = models.ForeignKey(
         Environment, on_delete=models.CASCADE, related_name="results")
-    meta_data = JSONField()
+    metadata = JSONField()
 
     def __str__(self):
         return u"%s: %s" % (self.benchmark.name, self.value)
@@ -543,7 +543,7 @@ class Report(models.Model):
                     'val_max': val_max,
                     'change': change,
                     'trend': trend,
-                    'artifacts_location': "{}/{}/".format(self.revision.commitid, bench.name)
+                    'artifacts_location': resobj.metadata.get('artifacts_location', '')
                 })
 
             # Compute Arithmetic averages
