@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-RUN apt-get update && apt-get install -y nginx python3 python3-pip gettext-base
+RUN apt-get update && apt-get install -y git nginx python3 python3-pip gettext-base
 RUN pip3 install --upgrade pip
 RUN pip3 install uwsgi
 RUN mkdir /code
