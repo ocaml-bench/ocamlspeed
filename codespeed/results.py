@@ -125,6 +125,7 @@ def save_result(data, update_repo=True):
     r.val_max = data.get('max')
     r.q1 = data.get('q1')
     r.q3 = data.get('q3')
+    r.metadata = data.get('metadata')
 
     r.full_clean()
     r.save()

@@ -10,7 +10,7 @@ from django.urls import reverse
 from django.conf import settings
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-
+from jsonfield import JSONField
 from .commits.github import GITHUB_URL_RE
 
 logger = logging.getLogger(__name__)
@@ -246,6 +246,7 @@ class Result(models.Model):
         Benchmark, on_delete=models.CASCADE, related_name="results")
     environment = models.ForeignKey(
         Environment, on_delete=models.CASCADE, related_name="results")
+    metadata = JSONField()
 
     def __str__(self):
         return u"%s: %s" % (self.benchmark.name, self.value)
@@ -542,7 +543,7 @@ class Report(models.Model):
                     'val_max': val_max,
                     'change': change,
                     'trend': trend,
-                    'artifacts_location': "{}/{}/".format(self.revision.commitid, bench.name)
+                    'artifacts_location': resobj.metadata.get('artifacts_location', '')
                 })
 
             # Compute Arithmetic averages
