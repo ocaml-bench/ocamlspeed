@@ -72,7 +72,7 @@ def getlogs(endrev, startrev):
     logs = []
     for log in filter(None, stdout.split(b'\x1e')):
         (short_commit_id, commit_id, date_t, author_name, author_email,
-         subject, body) = (s.strip() for s in log.split(b'\x00', 7))
+         subject, body) = (s.strip().decode('utf-8') for s in log.split(b'\x00', 7))
 
         tag = ""
 
@@ -86,7 +86,7 @@ def getlogs(endrev, startrev):
             stderr = b''
 
         if proc.returncode == 0:
-            tag = stdout.strip()
+            tag = stdout.strip().decode('utf-8')
 
         date = datetime.datetime.fromtimestamp(
             int(date_t)).strftime("%Y-%m-%d %H:%M:%S")
